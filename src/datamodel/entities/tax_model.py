@@ -1,8 +1,10 @@
+from pydantic import BaseModel
+
 from src.datamodel.enum.e_tax_recipient import ETaxRecipient
 from src.datamodel.enum.e_value_format import EValueFormat
 
 
-class TaxModel:
+class TaxModel(BaseModel):
     name: str
 
     # Tax value
@@ -17,3 +19,5 @@ class TaxModel:
         self.value = value
         self.value_format = value_format
         self.recipient = recipient
+
+        super().__init__()

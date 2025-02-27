@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class EContributionRelief(Enum):
-    UNDER_30 = "Under 30"
-    WOMEN = "Women"
-    OVER_50 = "Over 50"
+    UNDER_30 = "UNDER_30"
+    WOMEN = "WOMEN"
+    OVER_50 = "OVER_50"
+    NONE = "NONE"

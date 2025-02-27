@@ -1,5 +1,5 @@
 from enum import Enum
 
 class EValueFormat(Enum):
-    PERCENT = 'Percent'
-    FIXED = 'Fixed'
+    PERCENT = "PERCENT"
+    FIXED = "FIXED"

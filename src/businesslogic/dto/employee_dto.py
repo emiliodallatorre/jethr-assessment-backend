@@ -10,8 +10,8 @@ class EmployeeDTO(BaseModel):
     fiscal_detraction: EFiscalDetraction
 
     def to_json(self) -> str:
-        return self.json()
+        return self.model_dump_json()
 
     @staticmethod
     def from_json(data: str) -> 'EmployeeDTO':
-        return EmployeeDTO.parse_raw(data)
+        return EmployeeDTO.model_validate_json(data)
