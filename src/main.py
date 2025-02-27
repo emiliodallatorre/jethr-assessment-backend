@@ -21,7 +21,8 @@ async def lifespan(app: FastAPI):
 
 
 # Initialize FastAPI app
-zap_hr_calculator = FastAPI(title="Zap-HR net salary calculator", version="0.0.1", description="API for Your Project", lifespan=lifespan)
+zap_hr_calculator = FastAPI(title="Zap-HR net salary calculator", version="0.0.1", description="API for Your Project",
+                            lifespan=lifespan)
 
 # Configure CORS (adjust origins as needed)
 zap_hr_calculator.add_middleware(
@@ -35,6 +36,29 @@ zap_hr_calculator.add_middleware(
 # Include routers
 zap_hr_calculator.include_router(calculator_api.router, prefix=calculator_api.prefix, tags=calculator_api.tags)
 
-if __name__ == "__main__":
+
+def main():
     environment_loader.load_environment()
     uvicorn.run(zap_hr_calculator, host=os.getenv("HOST"), port=int(os.getenv("PORT")))
+
+
+# Gunicorn entry point generator
+def guvicorn_entrypoint(*args, **kwargs):
+    # Gunicorn CLI args are useless.
+    # https://stackoverflow.com/questions/8495367/
+    #
+    # Start the application in modified environment.
+    # https://stackoverflow.com/questions/18668947/
+    #
+    import sys
+    sys.argv = ['--gunicorn']
+
+    for k in kwargs:
+        sys.argv.append("--" + k)
+        sys.argv.append(kwargs[k])
+
+    return main()
+
+
+if __name__ == "__main__":
+    main()

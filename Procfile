@@ -1,1 +1,1 @@
-web: gunicorn src.main:zap_hr_calculator --env prod --bind 0.0.0.0:$PORT --worker-class uvicorn.workers.UvicornWorker
+web: gunicorn src.main:guvicorn_entrypoint(env=prod) --bind 0.0.0.0:$PORT --worker-class uvicorn.workers.UvicornWorker
