@@ -11,7 +11,8 @@ def load_environment():
     parser.add_argument("--env", type=str, help="Current environment", default="local")
     args, _ = parser.parse_known_args()
 
-    env_path: str = f"src/environments/.env.{args.env}"
+    env_name=os.getenv("env", args.env)
+    env_path: str = f"src/environments/.env.{env_name}"
 
     # Load environment variables from the specified file
     if os.path.exists(env_path):
