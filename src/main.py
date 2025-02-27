@@ -42,23 +42,5 @@ def main():
     uvicorn.run(zap_hr_calculator, host=os.getenv("HOST"), port=int(os.getenv("PORT")))
 
 
-# Gunicorn entry point generator
-def guvicorn_entrypoint(*args, **kwargs):
-    # Gunicorn CLI args are useless.
-    # https://stackoverflow.com/questions/8495367/
-    #
-    # Start the application in modified environment.
-    # https://stackoverflow.com/questions/18668947/
-    #
-    import sys
-    sys.argv = ['--gunicorn']
-
-    for k in kwargs:
-        sys.argv.append("--" + k)
-        sys.argv.append(kwargs[k])
-
-    return main()
-
-
 if __name__ == "__main__":
     main()
