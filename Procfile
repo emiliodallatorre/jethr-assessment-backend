@@ -1,1 +1,1 @@
-web: gunicorn src.main:guvicorn_entrypoint --env env=prod --bind 0.0.0.0:443 --worker-class uvicorn.workers.UvicornWorker
+web: gunicorn src.main:guvicorn_entrypoint --env env=prod --bind 0.0.0.0:$PORT --worker-class uvicorn.workers.UvicornWorker
