@@ -8,6 +8,7 @@ class EmployeeDTO(BaseModel):
     contract_type: EContractType
     contribution_relief: EContributionRelief
     fiscal_detraction: EFiscalDetraction
+    months: int
 
     def to_json(self) -> str:
         return self.model_dump_json()

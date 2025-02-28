@@ -1,5 +1,5 @@
 from enum import Enum
 
-class ETaxRecipient(Enum):
+class ECostRecipient(Enum):
     EMPLOYER = "EMPLOYER"
     EMPLOYEE = "EMPLOYEE"
